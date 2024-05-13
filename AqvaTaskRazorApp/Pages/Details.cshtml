@@ -1,0 +1,14 @@
+﻿@page
+@model MyApp.Namespace.DetailsModel
+@{
+    ViewData["Title"] = "Haber Detayı";
+}
+
+<h1>@Model.News.Title</h1>
+<img src="@Model.News.Img" alt="News Image" />
+<p>@Model.News.Description</p>
+
+@foreach (var article in Model.News.Article)
+{
+    <p>@article</p>
+}

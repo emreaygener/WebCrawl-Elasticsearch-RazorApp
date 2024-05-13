@@ -1,0 +1,26 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Gündem";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Gündem</h1>
+    <br />
+    <div>
+        <a class="btn btn-primary" href="/AllNews">Tüm Haberler</a>
+    </div>
+        <br>
+
+    <div class="row">
+        @foreach (var news in Model.Documents)
+        {
+            <div class="col-md-4 px-3">
+                <a target="_blank" href="/Details?link=@news.Link">
+                    <img src="@news.Img" alt="@news.Title" width="400px" height="250px"/>
+                    <h3>@news.Title</h3>
+                </a>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,24 @@
+﻿@page
+@model MyApp.Namespace.SearchModel
+@{
+    ViewData["Title"] = "Arama Sonuçları";
+}
+
+<h2>Search Results for "@Model.SearchQuery"</h2>
+
+@if (Model.SearchResults.Any())
+{
+    <ul>
+        @foreach (var news in Model.SearchResults)
+        {
+            <li><a target="_blank" href="/Details?link=@news.Link">
+                <h4>@news.Title</h4>
+                <img src="@news.Img" alt="@news.Title" width="300px"/>
+            </a></li>
+        }
+    </ul>
+}
+else
+{
+    <p>No results found.</p>
+}

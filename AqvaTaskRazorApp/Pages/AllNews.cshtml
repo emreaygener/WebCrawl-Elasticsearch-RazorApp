@@ -1,0 +1,26 @@
+﻿@page
+@model MyApp.Namespace.AllNewsModel
+@{
+    ViewData["Title"] = "Tüm Haberler";
+}
+<div>
+    <h1 class="display-4 text-center">Tüm Haberler</h1>
+    <br />
+    <div class="justify-content-center text-center">
+        <button disabled="@(Model.CurrentPage == 1 ? true : false)" type="button" onclick="location.href='?currentPage=' + @(Model.CurrentPage - 1) + '&pageSize=' + @Model.PageSize">Önceki</button>
+        <span>Sayfa @(Model.CurrentPage)/@(Model.TotalPages)</span>
+        <button disabled="@(Model.CurrentPage == Model.TotalPages ? true : false)" type="button" onclick="location.href='?currentPage=' + @(Model.CurrentPage + 1) + '&pageSize=' + @Model.PageSize">Sonraki</button>
+    </div>
+        <br />
+    <div class="row text-center">
+        @foreach (var news in Model.Documents)
+        {
+            <div class="col-md-4 px-3">
+                <a  href="/Details?link=@news.Link">
+                    <img src="@news.Img" alt="@news.Title" width="400px" height="250px" />
+                    <h3>@news.Title</h3>
+                </a>
+            </div>
+        }
+    </div>    
+</div>
